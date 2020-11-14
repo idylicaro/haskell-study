@@ -1,6 +1,8 @@
 --1)
 tuplaGenerator :: [a]->[b]->[(a,b)]
-tuplaGenerator l1 l2 = [(x,y) | x<-l1, y<-l2]
+tuplaGenerator [] _ = []
+tuplaGenerator _ [] = []
+tuplaGenerator (x:xs) (y:ys) = (x,y) : tuplaGenerator xs ys
 
 -- 2)
 listSelect :: [a] -> Int -> [a]
