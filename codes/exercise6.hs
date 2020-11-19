@@ -1,12 +1,13 @@
--- 1)
+import Data.Char
 
+-- 1)
 
 -- 2)
 reduce :: (Int->Int->Int)->[Int]->Int   
 reduce f [a] = a
 reduce f (x:xs) = f x (reduce f xs)
 
-maP :: (Int -> Int) -> [Int] -> [Int]
+maP :: (Int-> Int) -> [Int] -> [Int]
 maP f [] = []
 maP f (x:xs) = f x : (maP f xs)
 
@@ -35,3 +36,12 @@ q3::[Int]->(Int->Int->Int)->(Int -> Int)->Int
 q3 x rf mf = (reduce (rf) (divPerPos (map mf x) 1))
 
 -- q3 [1,2,3] (+) (^2)
+
+-- 4)
+
+q4::[String]->Int->[String]
+q4 [] _ = []
+q4 (x:xs) y 
+    | y==1 = map toUpper x : q4 xs y
+    | y/=1 = map toLower x : q4 xs y
+
