@@ -24,7 +24,13 @@ fatorial x = x * fatorial(x-1)
 
 q2 :: [Int] -> [Int]
 q2 [] = []
-q2 xs = [(fatorial x) | x <- xs, ( mod x 2) > 0]
+q2 xs = [(reduce (*) (transformInList x)) | x <- xs, ( mod x 2) > 0]
+
+transformInList :: Int -> [Int]
+transformInList 1 = [1]
+transformInList x = x : transformInList (x - 1)
+
+
 
 --3) obs: Esqueci de perguntar se poderia usar funções de terceiros, mas nesse caso não iria dar tempo fazer todas essas funções para interagir com tuplas então fui atrás de funções que manipulavam tuplas.
 -- toList :: Map k a -> [(k, a)] recebe um map e retorna uma lista dos resultados da interação
